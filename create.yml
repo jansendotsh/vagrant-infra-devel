@@ -10,4 +10,4 @@
   tasks:
   - name: Running basic setup
     import_role: 
-      name: basic_setup
+      name: baseline

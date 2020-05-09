@@ -23,9 +23,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.customize ["modifyvm", :id, "--name", "#{vmname}"]
     end
 
-    config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "create.yml"
-      ansible.extra_vars = { 
+    config.vm.provision "ansible" do |a|
+      a.playbook = "create.yml"
+      a.extra_vars = { 
         ansible_python_interpreter: "/usr/bin/python3",
         server_hostname: "#{vmname}"
       }

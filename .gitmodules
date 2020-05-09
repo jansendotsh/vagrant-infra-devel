@@ -1,0 +1,3 @@
+[submodule "roles/baseline"]
+	path = roles/baseline
+	url = https://github.com/jansendotsh/ansible-role-baseline.git
