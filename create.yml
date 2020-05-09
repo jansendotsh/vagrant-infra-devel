@@ -1,0 +1,13 @@
+---
+- name: Ansible provisioning during Vagrant setup
+  hosts: all
+  user: root
+  become: yes
+
+  vars_files:
+    - vars/private.yml
+
+  tasks:
+  - name: Running basic setup
+    import_role: 
+      name: basic_setup

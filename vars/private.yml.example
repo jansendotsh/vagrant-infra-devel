@@ -1,0 +1,17 @@
+# From basic_setup role:
+# ---
+# Setting server naming 
+# server_hostname: 
+# Unset to allow for assignment via Vagrant
+server_domain:
+
+# Non-root user
+nonroot_user:
+# Hashed value via passlib 
+# `python -c "from passlib.hash import sha512_crypt; print(sha512_crypt.hash('$PASSWORD'))"`
+nonroot_pass:
+
+# Setting SSH keys location online
+# Leave `git_url` commented out if using github.com
+# git_url: 
+git_user:
