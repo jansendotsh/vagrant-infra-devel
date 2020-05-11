@@ -11,5 +11,6 @@ This is a repository built to store my Vagrant environments for work across seve
 
 ## toDo
 
-- Break out `basic_setup` role to separate repo referenced by module.
-- Add Docker role via module.
+- Incorporate deployment of data, docker-compose file and starting services
+    - Ensure that files have correct contexts on Fedora host:
+        - https://www.projectatomic.io/blog/2015/06/using-volumes-with-docker-can-cause-problems-with-selinux/
