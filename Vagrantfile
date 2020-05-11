@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     docker1.vm.network :private_network, ip: "#{net_ip}.101"
     # We'll enable as we begin to build out web server functionality
-    # docker1.vm.network :forwarded_port, guest: 80, host: 8080
+    docker1.vm.network :forwarded_port, guest: 80, host: 8080
 
     docker1.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]

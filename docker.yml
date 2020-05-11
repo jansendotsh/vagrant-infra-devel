@@ -6,9 +6,11 @@
   become: yes
 
   tasks:
-  - name: Installing Docker (moby-engine) on Fedora
+  - name: Installing Docker (moby-engine) & docker-compose on Fedora
     dnf:
-      name: moby-engine
+      name: 
+      - moby-engine
+      - docker-compose
 
   - name: Enable Docker service
     systemd: 
