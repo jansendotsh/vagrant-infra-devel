@@ -1,0 +1,38 @@
+---
+# tasks file for docker
+- name: Installing Docker (moby-engine) on Fedora
+  hosts: all
+  user: root
+  become: yes
+
+  tasks:
+  - name: Installing Docker (moby-engine) & docker-compose on Fedora
+    dnf:
+      name: 
+      - moby-engine
+      - docker-compose
+
+  - name: Enable Docker service
+    systemd: 
+      name: docker
+      enabled: yes
+
+  - name: Check for existing cgroups configuration
+    shell: grep "systemd.unified_cgroup_hierarchy=0" /etc/default/grub
+    register: cgroups_grep
+    failed_when: "cgroups_grep.rc == 2"
+
+  - name: Updating GRUB to enable cgroups v1
+    lineinfile:
+      state: present
+      dest: /etc/default/grub
+      backrefs: yes
+      regexp: '^(GRUB_CMDLINE_LINUX=(?!.* audit)\"[^\"]+)(\".*)'
+      line: '\1 systemd.unified_cgroup_hierarchy=0\2'
+    when: cgroups_grep.stdout == ""
+
+  - name: Rebuild GRUB
+    command: grub2-mkconfig
+
+  - name: Restart server
+    reboot: 

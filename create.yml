@@ -11,3 +11,7 @@
   - name: Running basic setup
     import_role: 
       name: baseline
+
+  - name: Installing Docker
+    import_role:
+      name: docker
